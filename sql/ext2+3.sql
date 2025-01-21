@@ -8,11 +8,15 @@ CREATE TABLE IF NOT EXISTS directors (
 
 CREATE TABLE IF NOT EXISTS films (
 	id SERIAL PRIMARY KEY,
-	title TEXT UNIQUE NOT NULL,
+	title TEXT NOT NULL,
 	genre TEXT,
 	release_year INT,
 	score INT,
-	director_id SERIAL NOT NULL REFERENCES directors(id)
+	director_id SERIAL NOT NULL,
+	UNIQUE(title),
+	FOREIGN KEY(director_id) 
+		REFERENCES directors(id)
+		ON DELETE CASCADE
 );
 
 INSERT INTO directors
