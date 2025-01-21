@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS films;
+
 CREATE TABLE IF NOT EXISTS films (
 	id SERIAL PRIMARY KEY,
 	title TEXT NOT NULL,
@@ -43,9 +45,9 @@ SELECT * FROM films WHERE genre = 'Western' AND release_year < 2000;
 SELECT * FROM films WHERE UPPER(title) LIKE '%MATRIX%';
 
 -- Extension 1
-SELECT ROUND(AVG(score), 2) FROM films;
-SELECT COUNT(*) FROM films;
-SELECT genre, ROUND(AVG(score), 2) average FROM films GROUP BY genre;
+SELECT ROUND(AVG(score), 2) avg_score FROM films;
+SELECT COUNT(*) n_films FROM films;
+SELECT genre, ROUND(AVG(score), 2) avg_score FROM films GROUP BY genre;
 
 
 
